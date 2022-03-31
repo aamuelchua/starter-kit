@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/aamuelchua/Documents/Personal/Programming/React-Native/AR/Experia/ios/myviroapp.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,0 +1,13 @@
+# Blender 3.1.0 MTL File: 'None'
+# www.blender.org
+
+newmtl Material.001
+Ns 445.539795
+Ka 0.610837 0.610837 0.610837
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd  /Users/aamuelchua/Downloads/151534030-world-texture-satellite-image-of-the-earth-high-resolution-texture-of-the-planet-with-relief-shading.jpg

@@ -1,55 +1,44 @@
-import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
-import {
-  ViroARScene,
-  ViroText,
-  ViroConstants,
-  ViroARSceneNavigator,
-} from '@viro-community/react-viro';
+import React from 'react';
+import { Text, View,LogBox } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import TitleScreen from '../Experia/screen/TitleScreen';
+import HomeScreen from '../Experia/screen/HomeScreen';
+import TestARSite from './screen/TestARSite';
 
-const HelloWorldSceneAR = () => {
-  const [text, setText] = useState('Initializing AR...');
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
-  function onInitialized(state, reason) {
-    console.log('guncelleme', state, reason);
-    if (state === ViroConstants.TRACKING_NORMAL) {
-      setText('Hello World!');
-    } else if (state === ViroConstants.TRACKING_NONE) {
-      // Handle loss of tracking
-    }
-  }
+function App() {
+  const Stack = createStackNavigator();
+  
 
   return (
-    <ViroARScene onTrackingUpdated={onInitialized}>
-      <ViroText
-        text={text}
-        scale={[0.5, 0.5, 0.5]}
-        position={[0, 0, -1]}
-        style={styles.helloWorldTextStyle}
-      />
-    </ViroARScene>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown:false,
+          gestureEnabled:false,
+        }}
+      >
+        <Stack.Screen 
+          name="Title"
+          component={TitleScreen}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name="ARPlayer"
+          component={TestARSite}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
+}
 
-export default () => {
-  return (
-    <ViroARSceneNavigator
-      autofocus={true}
-      initialScene={{
-        scene: HelloWorldSceneAR,
-      }}
-      style={styles.f1}
-    />
-  );
-};
 
-var styles = StyleSheet.create({
-  f1: {flex: 1},
-  helloWorldTextStyle: {
-    fontFamily: 'Arial',
-    fontSize: 30,
-    color: '#ffffff',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
-});
+
+
+export default App;
